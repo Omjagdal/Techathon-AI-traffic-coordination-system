@@ -129,9 +129,3 @@ For questions or contributions, contact **parinith99@gmail.com** or open an issu
 
 ---
 
-### **🔹 What's Fixed?**
-✅ **Grammar & sentence clarity improved**  
-✅ **Clearer project structure & bullet points**  
-✅ **Better formatting for readability**  
-
-Let me know if you want any **more refinements!** 🚀
