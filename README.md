@@ -170,11 +170,6 @@ This project is open-source under the **MIT License**.
 
 Pull requests are welcome! Feel free to improve the simulation logic or add new features.
 
----
-
-## 📧 Contact
-
-For questions or contributions, contact **parinith99@gmail.com** or open an issue on GitHub.
 
 ---
 
