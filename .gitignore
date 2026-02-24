@@ -1,0 +1,31 @@
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+venv/
+.env
+
+# ── Node / Dashboard ────────────────────────────────────────
+node_modules/
+dashboard/node_modules/
+
+# ── OS files ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Image backups (not needed in repo) ───────────────────────
+images/_backup/
+images/_backup_old/
+
+# ── Temporary / utility scripts ──────────────────────────────
+prepare_vehicle_images.py

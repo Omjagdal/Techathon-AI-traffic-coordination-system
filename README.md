@@ -1,131 +1,181 @@
 
 ---
 
-# 🚦 AI-Powered Traffic Signal Simulation
-This project uses YOLO-based vehicle detection and LSTM-based traffic prediction to optimize traffic light control. The simulation dynamically adjusts signal timings based on real-time vehicle counts from video feeds.
-## 📌 Problem Statement  
-Traditional traffic signals operate on fixed timers, leading to inefficiencies such as unnecessary waiting times and congestion. This project aims to develop an **AI-powered adaptive traffic management system** that dynamically adjusts signal timings based on real-time traffic conditions detected using YOLOv8.  
+# 🚦 AI-Powered Smart Traffic Management System
+
+An intelligent traffic simulation that uses **YOLOv8** vehicle detection, **LSTM** traffic prediction, and multiple AI modules to dynamically optimize signal timings — all visualized through a **Pygame simulation** and a **React dashboard**.
 
 ---
 
-## 🔧 **Implementation Details**  
-### **1️⃣ Vehicle Detection Module**  
-- Uses **YOLOv8** to detect vehicles in live traffic feeds.  
-- Classifies detected vehicles into **cars, bikes, buses, trucks, and rickshaws**.  
+## 📌 Problem Statement
 
-### **2️⃣ Signal Switching Algorithm**  
-- Dynamically adjusts **red, yellow, and green signal durations**.  
-- Takes into account:  
-  ✅ **Vehicle count per lane**  
-  ✅ **Vehicle type (car, bus, etc.)**  
-  ✅ **Average vehicle speed**  
-
-### **3️⃣ Simulation Module**  
-- Built using **[Pygame](https://www.pygame.org/news)** to simulate:  
-  ✅ **Traffic signals**  
-  ✅ **Vehicle movements**  
-  ✅ **Signal timing adjustments**  
-
-For more details on the **object detection model**, **algorithm**, and **simulation**, refer to the documentation.  
+Traditional traffic signals operate on fixed timers, causing unnecessary waiting and congestion. This project develops an **AI-powered adaptive traffic management system** that dynamically adjusts signal timings based on real-time traffic conditions.
 
 ---
 
-## 🚀 **Features**  
-✅ **YOLOv8-Based Vehicle Detection** – Detects vehicles from real-time traffic video feeds.  
-✅ **LSTM-Based Traffic Prediction** – Forecasts future congestion trends.  
-✅ **Automated Traffic Signal Control** – Adjusts green light durations dynamically.  
-✅ **Multiple Simulation Runs** – Runs the simulation multiple times and saves data.  
-✅ **Excel Report Output** – Stores final traffic analysis results.  
+## 🚀 Features
+
+✅ **YOLOv8 Vehicle Detection** — Detects cars, bikes, buses, trucks, rickshaws, and ambulances from video feeds  
+✅ **LSTM Traffic Prediction** — Forecasts future congestion trends  
+✅ **Adaptive Signal Timing** — AI adjusts green light durations based on vehicle density  
+✅ **Emergency Green Corridor** — Priority routing for ambulances with automatic signal preemption  
+✅ **Pollution-Aware Optimization** — Factors in AQI for signal decisions  
+✅ **Junction Coordination** — Syncs adjacent intersections for traffic flow  
+✅ **Real-time Dashboard** — React-based web dashboard with live traffic metrics  
+✅ **Professional Pygame Simulation** — Smooth 60 FPS simulation with AI HUD overlay  
 
 ---
 
-## 🛠 **How It Works**  
-1. **Vehicle Detection:** YOLOv8 detects vehicles from live video feeds.  
-2. **Traffic Data Processing:** The detected vehicle counts are analyzed.  
-3. **Signal Adjustment:** Green light durations are set based on vehicle density.  
-4. **Prediction with LSTM:** Future congestion trends are forecasted.  
-5. **Simulation Execution:** The model is tested through multiple runs.  
-6. **Result Storage:** Data is saved in an **Excel sheet** for further analysis.
-[![Traffic Simulation Demo](https://github.com/Zem-0/AI-Powered-Smart-Traffic-Management-System/blob/main/ezgif.com-video-to-gif-converter.gif)]
+## 🔧 AI Modules
 
-   
-  
-
+| Module | File | Description |
+|--------|------|-------------|
+| Adaptive Timing | `ai_adaptive_timing.py` | Dynamically adjusts green time based on vehicle count & wait time |
+| Green Corridor | `ai_green_corridor.py` | Emergency vehicle priority routing & signal preemption |
+| Pollution Aware | `ai_pollution.py` | Integrates AQI data into signal optimization |
+| Junction Coordination | `ai_junction_coordination.py` | Synchronizes adjacent intersections |
+| AI HUD | `ai_hud.py` | On-screen AI status panel for the simulation |
+| Configuration | `ai_config.py` | Centralized AI parameters and thresholds |
 
 ---
 
-## 📊 Demo and Results
-[![Traffic Simulation Demo](https://github.com/Zem-0/AI-Powered-Smart-Traffic-Management-System/blob/main/ezgif.com-speed.gif)]
+## 📂 Project Structure
 
-- **Real-time traffic simulation with vehicle movements**  
-- **Signal timing adjustments based on YOLO vehicle detection**  
-- **Excel report (`simulation_results.xlsx`) summarizing results**
-
-![Traffic Simulation](https://github.com/Zem-0/AI-Powered-Smart-Traffic-Management-System/blob/main/Screenshot%202025-02-11%20120803.png)
-
-
-
----
-
-## 📂 **Project Structure**  
 ```
-├── simulation.py          # Main traffic simulation logic  
-├── run_simulation.py      # Runs multiple simulations & saves results  
-├── signal_results.csv     # Stores vehicle detection results per signal  
-├── simulation_results.xlsx # Aggregated results from multiple runs  
-├── README.md              # Project documentation  
+AI-Powered-Smart-Traffic-Management-System/
+├── simulation.py                  # Main Pygame traffic simulation
+├── server.py                      # FastAPI WebSocket backend server
+├── app.py                         # Streamlit visualization app
+├── stream.py                      # Video stream processing
+├── data.py                        # Data handling utilities
+├── image_loader.py                # Image loading with Pillow fallback
+│
+├── ai_adaptive_timing.py          # AI: Adaptive signal timing
+├── ai_green_corridor.py           # AI: Emergency green corridor
+├── ai_pollution.py                # AI: Pollution-aware optimization
+├── ai_junction_coordination.py    # AI: Junction coordination
+├── ai_hud.py                      # AI: HUD overlay for simulation
+├── ai_config.py                   # AI: Configuration & parameters
+│
+├── images/                        # Vehicle & signal sprite images
+│   ├── right/                     # Right-facing vehicle sprites
+│   ├── down/                      # Down-facing vehicle sprites
+│   ├── left/                      # Left-facing vehicle sprites
+│   ├── up/                        # Up-facing vehicle sprites
+│   └── signals/                   # Traffic signal images
+│
+├── models/                        # ML model weights
+│   └── yolov8n.pt
+├── yolov5s.pt                     # YOLOv5 model weights
+├── traffic_prediction_model.keras # LSTM prediction model
+│
+├── dashboard/                     # React web dashboard
+│   ├── src/
+│   │   ├── pages/                 # Dashboard pages
+│   │   ├── components/            # Reusable UI components
+│   │   ├── hooks/                 # Custom React hooks
+│   │   └── data/                  # Static data
+│   ├── package.json
+│   └── vite.config.js
+│
+├── data/                          # Traffic data CSVs
+├── vids/                          # Sample traffic video feeds
+├── requirements.txt               # Python dependencies
+└── README.md
 ```
 
 ---
 
-## 🛠 **Installation**  
-### **1️⃣ Clone the Repository**  
+## 🛠 Installation
+
+### 1️⃣ Clone the Repository
 ```sh
-git clone https://github.com/your-username/traffic-simulation.git
-cd traffic-simulation
+git clone https://github.com/your-username/AI-Powered-Smart-Traffic-Management-System.git
+cd AI-Powered-Smart-Traffic-Management-System
 ```
-### **2️⃣ Install Dependencies**  
+
+### 2️⃣ Set Up Python Environment
 ```sh
+python3 -m venv venv
+source venv/bin/activate        # macOS/Linux
+# venv\Scripts\activate         # Windows
 pip install -r requirements.txt
 ```
 
----
-
-## ▶️ **Running the Project**  
-### **Run a Single Simulation**  
+### 3️⃣ Set Up Dashboard
 ```sh
-python simulation.py
-```
-### **Run Multiple Simulations (15 runs, save results to Excel)**  
-```sh
-python run_simulation.py
+cd dashboard
+npm install
+cd ..
 ```
 
 ---
 
-## 🤖 **Future Enhancements**  
-🔹 **Integrate live traffic camera feeds** for real-world deployment.  
-🔹 **Implement Reinforcement Learning (RL)** for improved signal optimization.  
-🔹 **Enhance visualization with a web-based dashboard**.  
+## ▶️ Running the Project
+
+### Run the Pygame Simulation
+```sh
+source venv/bin/activate
+python3 simulation.py
+```
+**Keyboard Controls:**
+- `1-4` → Spawn ambulance in RIGHT / DOWN / LEFT / UP direction
+- `H` → Toggle AI HUD panel
+
+### Run the Backend Server + Dashboard
+```sh
+# Terminal 1 — Backend
+source venv/bin/activate
+python3 server.py
+
+# Terminal 2 — Dashboard
+cd dashboard
+npm run dev
+```
+Then open **http://localhost:5173** in your browser.
+
+### Run the Streamlit App
+```sh
+source venv/bin/activate
+streamlit run app.py
+```
 
 ---
 
-## 📜 **License**  
-This project is open-source under the **MIT License**.  
+## 📊 Demo
+
+![Traffic Simulation](https://github.com/Zem-0/AI-Powered-Smart-Traffic-Management-System/blob/main/ezgif.com-video-to-gif-converter.gif)
+
+![Traffic Simulation](https://github.com/Zem-0/AI-Powered-Smart-Traffic-Management-System/blob/main/ezgif.com-speed.gif)
+
+![Screenshot](https://github.com/Zem-0/AI-Powered-Smart-Traffic-Management-System/blob/main/Screenshot%202025-02-11%20120803.png)
 
 ---
 
-## 🤝 **Contributing**  
-Pull requests are welcome! Feel free to **improve the simulation logic** or **add new features**.  
+## 🤖 Future Enhancements
+
+🔹 Integrate live traffic camera feeds for real-world deployment  
+🔹 Implement Reinforcement Learning (RL) for improved signal optimization  
+🔹 Add multi-junction simulation with coordinated signal networks  
 
 ---
 
-## 📧 **Contact**  
-For questions or contributions, contact **parinith99@gmail.com** or open an issue on GitHub.  
+## 📜 License
+
+This project is open-source under the **MIT License**.
 
 ---
 
-🚦 **Optimizing Traffic, One Signal at a Time!** 🚦  
+## 🤝 Contributing
+
+Pull requests are welcome! Feel free to improve the simulation logic or add new features.
 
 ---
 
+## 📧 Contact
+
+For questions or contributions, contact **parinith99@gmail.com** or open an issue on GitHub.
+
+---
+
+🚦 **Optimizing Traffic, One Signal at a Time!** 🚦
