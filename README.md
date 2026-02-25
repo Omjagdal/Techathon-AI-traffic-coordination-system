@@ -164,12 +164,6 @@ streamlit run app.py
 
 This project is open-source under the **MIT License**.
 
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! Feel free to improve the simulation logic or add new features.
-
 
 ---
 
